@@ -8,22 +8,22 @@ export function activate(context: ExtensionContext) {
   context.subscriptions.push(
     commands.registerCommand("koby.createPage", (uri) =>
       templateCreatorService.generateAlfreedPage(
-        FileManagerService.removeFileFromPath(uri.fsPath)
+        FileManagerService.removeFileFromPath(uri?.fsPath)
       )
     ),
     commands.registerCommand("koby.createStatefulPage", (uri) =>
       templateCreatorService.generateStatefulPage(
-        FileManagerService.removeFileFromPath(uri.fsPath)
+        FileManagerService.removeFileFromPath(uri?.fsPath)
       )
     ),
     commands.registerCommand("koby.createService", (uri) =>
       templateCreatorService.generateService(
-        FileManagerService.removeFileFromPath(uri.fsPath)
+        FileManagerService.removeFileFromPath(uri?.fsPath)
       )
     ),
     commands.registerCommand("koby.createLoader", (uri) =>
       templateCreatorService.generateLoader(
-        FileManagerService.removeFileFromPath(uri.fsPath)
+        FileManagerService.removeFileFromPath(uri?.fsPath)
       )
     )
   );
