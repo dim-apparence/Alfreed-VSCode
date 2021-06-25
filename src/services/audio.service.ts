@@ -2,7 +2,7 @@ const player = require("play-sound")();
 import * as path from "path";
 
 export class AudioService {
-  private audioPath = path.join(__dirname, "..", "..", "medias");
+  private audioPath = path.join(__dirname, "..", "..", "medias", "audios");
 
   playSuccess() {
     try {
