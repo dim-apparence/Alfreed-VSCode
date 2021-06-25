@@ -6,22 +6,22 @@ export function activate(context: ExtensionContext) {
   let templateCreatorService = new TemplateCreatorService();
 
   context.subscriptions.push(
-    commands.registerCommand("alfreed.createPage", (uri) =>
+    commands.registerCommand("koby.createPage", (uri) =>
       templateCreatorService.generateAlfreedPage(
         FileManagerService.removeFileFromPath(uri.fsPath)
       )
     ),
-    commands.registerCommand("alfreed.createStatefulPage", (uri) =>
+    commands.registerCommand("koby.createStatefulPage", (uri) =>
       templateCreatorService.generateStatefulPage(
         FileManagerService.removeFileFromPath(uri.fsPath)
       )
     ),
-    commands.registerCommand("alfreed.createService", (uri) =>
+    commands.registerCommand("koby.createService", (uri) =>
       templateCreatorService.generateService(
         FileManagerService.removeFileFromPath(uri.fsPath)
       )
     ),
-    commands.registerCommand("alfreed.createLoader", (uri) =>
+    commands.registerCommand("koby.createLoader", (uri) =>
       templateCreatorService.generateLoader(
         FileManagerService.removeFileFromPath(uri.fsPath)
       )

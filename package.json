@@ -1,6 +1,6 @@
 {
-  "name": "alfreed",
-  "displayName": "alfreed",
+  "name": "koby",
+  "displayName": "koby",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -10,52 +10,52 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:alfreed.createPage",
-    "onCommand:alfreed.createStatefulPage",
-    "onCommand:alfreed.createService",
-    "onCommand:alfreed.createLoader"
+    "onCommand:koby.createPage",
+    "onCommand:koby.createStatefulPage",
+    "onCommand:koby.createService",
+    "onCommand:koby.createLoader"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "alfreed.createPage",
-        "title": "📘 Create Alfreed page",
-        "category": "Alfreed"
+        "command": "koby.createPage",
+        "title": "📘 Create page: Alfreed",
+        "category": "MVVM"
       },
       {
-        "command": "alfreed.createStatefulPage",
-        "title": "📗 Create MVVM Stateful page",
-        "category": "Alfreed"
+        "command": "koby.createStatefulPage",
+        "title": "📗 Create page: Stateful",
+        "category": "MVVM"
       },
       {
-        "command": "alfreed.createService",
+        "command": "koby.createService",
         "title": "🚀 Create service",
-        "category": "Alfreed"
+        "category": "Koby"
       },
       {
-        "command": "alfreed.createLoader",
+        "command": "koby.createLoader",
         "title": "📦 Create loader",
-        "category": "Alfreed"
+        "category": "Koby"
       }
     ],
     "menus": {
       "explorer/context": [
         {
-          "command": "alfreed.createPage",
-          "group": "alfreed"
+          "command": "koby.createPage",
+          "group": "mvvm"
         },
         {
-          "command": "alfreed.createStatefulPage",
-          "group": "alfreed"
+          "command": "koby.createStatefulPage",
+          "group": "mvvm"
         },
         {
-          "command": "alfreed.createService",
-          "group": "alfreed"
+          "command": "koby.createService",
+          "group": "koby"
         },
         {
-          "command": "alfreed.createLoader",
-          "group": "alfreed"
+          "command": "koby.createLoader",
+          "group": "koby"
         }
       ]
     }
