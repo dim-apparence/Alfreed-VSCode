@@ -1,14 +1,29 @@
 {
   "name": "koby",
-  "displayName": "koby",
+  "displayName": "Koby",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "engines": {
     "vscode": "^1.46.0"
   },
+  "publisher": "istornz",
   "categories": [
     "Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dim-apparence/Koby"
+  },
+  "keywords": [
+    "flutter",
+    "mvvm",
+    "generator",
+    "alfreed",
+    "stateful",
+    "loader",
+    "service"
+  ],
+  "icon": "icon.png",
   "activationEvents": [
     "onCommand:koby.createPage",
     "onCommand:koby.createStatefulPage",
