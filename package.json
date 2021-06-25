@@ -10,16 +10,55 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:alfreed.helloWorld"
+    "onCommand:alfreed.createPage",
+    "onCommand:alfreed.createStatefulPage",
+    "onCommand:alfreed.createService",
+    "onCommand:alfreed.createLoader"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "alfreed.helloWorld",
-        "title": "Hello World"
+        "command": "alfreed.createPage",
+        "title": "📘 Create Alfreed page",
+        "category": "Alfreed"
+      },
+      {
+        "command": "alfreed.createStatefulPage",
+        "title": "📗 Create MVVM Stateful page",
+        "category": "Alfreed"
+      },
+      {
+        "command": "alfreed.createService",
+        "title": "🚀 Create service",
+        "category": "Alfreed"
+      },
+      {
+        "command": "alfreed.createLoader",
+        "title": "📦 Create loader",
+        "category": "Alfreed"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "alfreed.createPage",
+          "group": "alfreed"
+        },
+        {
+          "command": "alfreed.createStatefulPage",
+          "group": "alfreed"
+        },
+        {
+          "command": "alfreed.createService",
+          "group": "alfreed"
+        },
+        {
+          "command": "alfreed.createLoader",
+          "group": "alfreed"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -31,15 +70,21 @@
   },
   "devDependencies": {
     "@types/glob": "^7.1.3",
+    "@types/mkdirp": "^1.0.1",
     "@types/mocha": "^8.0.4",
     "@types/node": "^12.11.7",
     "@types/vscode": "^1.46.0",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@typescript-eslint/parser": "^4.9.0",
+    "change-case": "^4.1.2",
     "eslint": "^7.15.0",
     "glob": "^7.1.6",
     "mocha": "^8.1.3",
+    "path": "^0.12.7",
     "typescript": "^4.1.2",
     "vscode-test": "^1.4.1"
+  },
+  "dependencies": {
+    "mkdirp": "^1.0.4"
   }
 }
