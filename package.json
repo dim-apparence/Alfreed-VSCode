@@ -85,6 +85,7 @@
     "vscode-test": "^1.4.1"
   },
   "dependencies": {
-    "mkdirp": "^1.0.4"
+    "mkdirp": "^1.0.4",
+    "play-sound": "^1.1.0"
   }
 }

@@ -4,24 +4,13 @@ import { TemplateAlfreed } from "../templates/alfreed.template";
 import { TemplateLoader } from "../templates/loader.template";
 import { TemplateService } from "../templates/service.template";
 import { TemplateStateful } from "../templates/stateful.template";
+import { AudioService } from "./audio.service";
 import { FileManagerService } from "./file-manager.service";
 import { VSCodeService } from "./vscode.service";
 
 export class TemplateCreatorService {
   private vscodeService: VSCodeService = new VSCodeService();
-
-  private async promptPathIfNeeded(currentPath: string) {
-    if (!currentPath) {
-      const path = await this.vscodeService.prompt("Type path ...");
-      if (!path) {
-        window.showErrorMessage(`Please provide a non empty path`);
-        return;
-      }
-      return path;
-    } else {
-      return currentPath;
-    }
-  }
+  private audioService: AudioService = new AudioService();
 
   async generateLoader(currentPath: string) {
     const loaderName = await this.vscodeService.prompt(
@@ -35,6 +24,7 @@ export class TemplateCreatorService {
 
     if (!loaderName || loaderName.length <= 0) {
       window.showErrorMessage(`Please provide a non empty name`);
+      this.audioService.playError();
       return;
     }
     let loaderNameFiltered = loaderName.replace(/loader/i, "");
@@ -49,6 +39,7 @@ export class TemplateCreatorService {
     window.showInformationMessage(
       `${pascalCase(loaderName)} created successfully 👌`
     );
+    this.audioService.playSuccess();
   }
 
   async generateService(currentPath: string) {
@@ -63,6 +54,7 @@ export class TemplateCreatorService {
 
     if (!serviceName || serviceName.length <= 0) {
       window.showErrorMessage(`Please provide a non empty name`);
+      this.audioService.playError();
       return;
     }
     let serviceNameFiltered = serviceName.replace(/service/i, "");
@@ -78,6 +70,7 @@ export class TemplateCreatorService {
     window.showInformationMessage(
       `${pascalCase(serviceName)} created successfully 👌`
     );
+    this.audioService.playSuccess();
   }
 
   async generateAlfreedPage(currentPath: string) {
@@ -89,6 +82,7 @@ export class TemplateCreatorService {
     }
     if (!pageName || pageName.length <= 0) {
       window.showErrorMessage(`Please provide a non empty name`);
+      this.audioService.playError();
       return;
     }
 
@@ -125,6 +119,7 @@ export class TemplateCreatorService {
     window.showInformationMessage(
       `${pascalCase(pageName)} created successfully 👌`
     );
+    this.audioService.playSuccess();
   }
 
   async generateStatefulPage(currentPath: string) {
@@ -136,6 +131,7 @@ export class TemplateCreatorService {
     }
     if (!pageName || pageName.length <= 0) {
       window.showErrorMessage(`Please provide a non empty name`);
+      this.audioService.playError();
       return;
     }
 
@@ -172,5 +168,20 @@ export class TemplateCreatorService {
     window.showInformationMessage(
       `${pascalCase(pageName)} created successfully 👌`
     );
+    this.audioService.playSuccess();
+  }
+
+  private async promptPathIfNeeded(currentPath: string) {
+    if (!currentPath) {
+      const path = await this.vscodeService.prompt("Type path ...");
+      if (!path) {
+        window.showErrorMessage(`Please provide a non empty path`);
+        this.audioService.playError();
+        return;
+      }
+      return path;
+    } else {
+      return currentPath;
+    }
   }
 }

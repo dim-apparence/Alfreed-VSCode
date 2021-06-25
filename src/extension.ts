@@ -1,4 +1,4 @@
-import { commands, ExtensionContext, window } from "vscode";
+import { commands, ExtensionContext } from "vscode";
 import { FileManagerService } from "./services/file-manager.service";
 import { TemplateCreatorService } from "./services/template-creator.service";
 
