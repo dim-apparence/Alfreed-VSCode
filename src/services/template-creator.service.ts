@@ -93,12 +93,11 @@ export class TemplateCreatorService {
     }
 
     const pageNameFiltered = pageName.replace(/page/i, "");
-    const modelTemplate =
-      TemplateAlfreed.generateModel(pageNameFiltered);
+    const modelTemplate = TemplateAlfreed.generateModel(pageNameFiltered);
     const presenterTemplate =
       TemplateAlfreed.generatePresenter(pageNameFiltered);
-    const pageTemplate =
-      TemplateAlfreed.generatePage(pageNameFiltered);
+    const pageTemplate = TemplateAlfreed.generatePage(pageNameFiltered);
+    const testTemplate = TemplateAlfreed.generateTest(pageNameFiltered);
 
     await Promise.all([
       FileManagerService.createFile(
@@ -115,6 +114,11 @@ export class TemplateCreatorService {
         currentPath,
         `/${snakeCase(pageNameFiltered)}.dart`,
         pageTemplate
+      ),
+      FileManagerService.createFile(
+        currentPath.replace("lib", "test"),
+        `/${snakeCase(pageNameFiltered)}_test.dart`,
+        testTemplate
       ),
     ]);
 
@@ -140,6 +144,7 @@ export class TemplateCreatorService {
     const presenterTemplate =
       TemplateStateful.generatePresenter(pageNameFiltered);
     const pageTemplate = TemplateStateful.generatePage(pageNameFiltered);
+    const testTemplate = TemplateStateful.generateTest(pageNameFiltered);
 
     await Promise.all([
       FileManagerService.createFile(
@@ -156,6 +161,11 @@ export class TemplateCreatorService {
         currentPath,
         `/${snakeCase(pageNameFiltered)}.dart`,
         pageTemplate
+      ),
+      FileManagerService.createFile(
+        currentPath.replace("lib", "test"),
+        `/${snakeCase(pageNameFiltered)}_test.dart`,
+        testTemplate
       ),
     ]);
 

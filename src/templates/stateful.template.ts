@@ -1,4 +1,4 @@
-import { pascalCase, snakeCase } from "change-case";
+import { pascalCase, sentenceCase, snakeCase } from "change-case";
 
 export class TemplateStateful {
   static generateModel(modelName: string) {
@@ -117,6 +117,52 @@ class ${pascalCaseName}Presenter {
   void loadData() { }
   void dispose() { }
 }  
+`;
+  }
+
+  static generateTest(pageName: string) {
+    const pascalCaseName = pascalCase(pageName);
+    const sentenceCaseName = sentenceCase(pageName);
+
+    return `\
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+
+void main() async {
+  // mock repositories here
+
+  // load mocked file here
+
+  group('${sentenceCaseName}', () {
+    void _resetMocks() { }
+
+    Future _beforeEach(WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: AppUtils.createWithInjectors(
+            MaterialApp(
+              routes: {
+                '': (ctx) => ${pascalCaseName}Page(),
+              },
+              initialRoute: '',
+            ),
+            mockedRepositories: {},
+          ),
+          routes: {},
+        ),
+      );
+      await tester.pumpAndSettle();
+    }
+
+    testWidgets('should display page', (WidgetTester tester) async {
+      _resetMocks();
+      await _beforeEach(tester);
+
+      expect(find.byKey(ValueKey('${pascalCaseName}Page')), findsOneWidget);
+    });
+  });
+}
 `;
   }
 }
