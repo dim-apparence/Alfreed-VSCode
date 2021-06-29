@@ -134,22 +134,19 @@ void main() async {
 
   // load mocked file here
 
-  group('${sentenceCaseName}', () {
+  group('${sentenceCaseName} - Page', () {
     void _resetMocks() { }
 
     Future _beforeEach(WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: AppUtils.createWithInjectors(
-            MaterialApp(
-              routes: {
-                '': (ctx) => ${pascalCaseName}Page(),
-              },
-              initialRoute: '',
-            ),
-            mockedRepositories: {},
+        AppUtils.createWithInjectors(
+          MaterialApp(
+            routes: {
+              '': (ctx) => ${pascalCaseName}Page(),
+            },
+            initialRoute: '',
           ),
-          routes: {},
+          mockedRepositories: {},
         ),
       );
       await tester.pumpAndSettle();

@@ -86,7 +86,7 @@ void main() async {
   // load mocked file here
 
   group(
-    '${sentenceCaseName}',
+    '${sentenceCaseName} - Page',
     () {
       void _resetMocks() {}
 
