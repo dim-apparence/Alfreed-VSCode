@@ -16,6 +16,11 @@ export function activate(context: ExtensionContext) {
         FileManagerService.removeFileFromPath(uri?.fsPath)
       )
     ),
+    commands.registerCommand("koby.createHermepPage", (uri) =>
+      templateCreatorService.generateHermepPage(
+        FileManagerService.removeFileFromPath(uri?.fsPath)
+      )
+    ),
     commands.registerCommand("koby.createService", (uri) =>
       templateCreatorService.generateService(
         FileManagerService.removeFileFromPath(uri?.fsPath)

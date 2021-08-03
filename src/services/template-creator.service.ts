@@ -1,6 +1,7 @@
 import { pascalCase, snakeCase } from "change-case";
 import { window } from "vscode";
 import { TemplateAlfreed } from "../templates/alfreed.template";
+import { TemplateHermep } from "../templates/hermep.template";
 import { TemplateLoader } from "../templates/loader.template";
 import { TemplateService } from "../templates/service.template";
 import { TemplateStateful } from "../templates/stateful.template";
@@ -141,6 +142,55 @@ export class TemplateCreatorService {
       TemplateStateful.generatePresenter(pageNameFiltered);
     const pageTemplate = TemplateStateful.generatePage(pageNameFiltered);
     const testTemplate = TemplateStateful.generateTest(pageNameFiltered);
+
+    await Promise.all([
+      FileManagerService.createFile(
+        currentPath,
+        `/${snakeCase(pageNameFiltered)}_viewmodel.dart`,
+        modelTemplate
+      ),
+      FileManagerService.createFile(
+        currentPath,
+        `/${snakeCase(pageNameFiltered)}_presenter.dart`,
+        presenterTemplate
+      ),
+      FileManagerService.createFile(
+        currentPath,
+        `/${snakeCase(pageNameFiltered)}.dart`,
+        pageTemplate
+      ),
+      FileManagerService.createFile(
+        currentPath.replace("lib", "test"),
+        `/${snakeCase(pageNameFiltered)}_test.dart`,
+        testTemplate
+      ),
+    ]);
+
+    window.showInformationMessage(
+      `${pascalCase(pageName)} created successfully 👌`
+    );
+    this.audioService.playSuccess();
+  }
+
+  async generateHermepPage(currentPath: string) {
+    const pageName = await this.vscodeService.prompt("Type the page name...");
+
+    const promptedUri = this.promptPathIfNeeded(currentPath);
+    if (!promptedUri) {
+      return;
+    }
+    if (!pageName || pageName.length <= 0) {
+      window.showErrorMessage(`Please provide a non empty name`);
+      this.audioService.playError();
+      return;
+    }
+
+    const pageNameFiltered = pageName.replace(/page/i, "");
+    const modelTemplate = TemplateHermep.generateModel(pageNameFiltered);
+    const presenterTemplate =
+    TemplateHermep.generatePresenter(pageNameFiltered);
+    const pageTemplate = TemplateHermep.generatePage(pageNameFiltered);
+    const testTemplate = TemplateHermep.generateTest(pageNameFiltered);
 
     await Promise.all([
       FileManagerService.createFile(
