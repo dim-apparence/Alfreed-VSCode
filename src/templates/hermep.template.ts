@@ -24,16 +24,21 @@ import 'package:flutter/material.dart';
 import '${snakeCaseName}_presenter.dart';
 import '${snakeCaseName}_viewmodel.dart';
 
-class ${pascalCaseName}ViewInterface { }
+class ${pascalCaseName}Arguments {
+  ${pascalCaseName}Arguments();
+}
+
+abstract class ${pascalCaseName}ViewInterface { }
 
 class ${pascalCaseName}Page extends StatefulWidget {
-  ${pascalCaseName}Page({Key? key});
+  final ${pascalCaseName}Arguments args;
+  ${pascalCaseName}Page(this.args, {Key? key});
 
   @override
   _${pascalCaseName}PageState createState() => _${pascalCaseName}PageState();
 }
 
-class _${pascalCaseName}PageState extends HermepPage<${pascalCaseName}ViewModel, ${pascalCaseName}Presenter> with ${pascalCaseName}ViewInterface {
+class _${pascalCaseName}PageState extends HermepPage<${pascalCaseName}ViewModel, ${pascalCaseName}Presenter, ${pascalCaseName}Page> with ${pascalCaseName}ViewInterface {
   @override
   void createAnimations() { }
 
