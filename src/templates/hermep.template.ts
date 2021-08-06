@@ -32,7 +32,7 @@ abstract class ${pascalCaseName}ViewInterface { }
 
 class ${pascalCaseName}Page extends StatefulWidget {
   final ${pascalCaseName}Arguments args;
-  ${pascalCaseName}Page(this.args, {Key? key});
+  ${pascalCaseName}Page(this.args, {Key? key}) : super(key: key);
 
   @override
   _${pascalCaseName}PageState createState() => _${pascalCaseName}PageState();
