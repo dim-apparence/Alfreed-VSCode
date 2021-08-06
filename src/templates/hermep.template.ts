@@ -31,8 +31,8 @@ class ${pascalCaseName}Arguments {
 abstract class ${pascalCaseName}ViewInterface { }
 
 class ${pascalCaseName}Page extends StatefulWidget {
-  final ${pascalCaseName}Arguments args;
-  ${pascalCaseName}Page(this.args, {Key? key}) : super(key: key);
+  final ${pascalCaseName}Arguments? args;
+  ${pascalCaseName}Page({Key? key, this.args}) : super(key: key);
 
   @override
   _${pascalCaseName}PageState createState() => _${pascalCaseName}PageState();
@@ -41,6 +41,9 @@ class ${pascalCaseName}Page extends StatefulWidget {
 class _${pascalCaseName}PageState extends HermepPage<${pascalCaseName}ViewModel, ${pascalCaseName}Presenter, ${pascalCaseName}Page> with ${pascalCaseName}ViewInterface {
   @override
   void createAnimations() { }
+
+  @override
+  void afterViewInit() { }
 
   @override
   HermepPresenter createPresenter() => ${pascalCaseName}Presenter(this);
