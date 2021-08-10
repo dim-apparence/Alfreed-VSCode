@@ -96,11 +96,20 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 void main() async {
+  late ${pascalCaseName}Presenter presenter;
+  late ${pascalCaseName}ViewModel model;
+
   // mock repositories here
 
   // load mocked file here
 
   group('${sentenceCaseName} - Page', () {
+    void getHermepState(WidgetTester tester) {
+      final dynamic widgetState = tester.state(find.byType(${pascalCaseName}Page));
+      presenter = widgetState.presenter;
+      model = widgetState.viewModel;
+    }
+
     void _resetMocks() { }
 
     Future _beforeEach(WidgetTester tester) async {
@@ -116,6 +125,7 @@ void main() async {
         ),
       );
       await tester.pumpAndSettle();
+      getHermepState(tester);
     }
 
     testWidgets('should display page', (WidgetTester tester) async {

@@ -6,6 +6,8 @@
 
 The ultimate VSCode templating extension, create all your page, service, loader etc directly from VSCode in a few seconds 🚀 !
 
+![demo](./medias/images/demo.gif)
+
 ## 🧐 What is it ?
 
 Easily create some Flutter page pre-filled like:
