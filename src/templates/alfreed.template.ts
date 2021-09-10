@@ -6,6 +6,8 @@ export class TemplateAlfreed {
 
     return `\
 class ${pascalCaseName}ViewModel {
+  
+
   ${pascalCaseName}ViewModel();
 }
 `;
@@ -32,7 +34,7 @@ class ${pascalCaseName}Page extends AlfreedPage<${pascalCaseName}Presenter, ${pa
   @override
   AlfreedPageBuilder<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel, ${pascalCaseName}ViewInterface> get alfreedPageBuilder {
       return AlfreedPageBuilder<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel, ${pascalCaseName}ViewInterface>(
-      key: ValueKey('${pascalCaseName}Presenter'),
+      key: ValueKey('${pascalCaseName}PagePresenter'),
       presenterBuilder: (context) => ${pascalCaseName}Presenter(),
       interfaceBuilder: (context) => ${pascalCaseName}ViewInterface(context),
       builder: (context, presenter, model) {
@@ -63,6 +65,8 @@ class ${pascalCaseName}Presenter extends Presenter<${pascalCaseName}ViewModel, $
   @override
   void onInit() {
     super.onInit();
+
+
   }
 }
 `;
@@ -88,13 +92,14 @@ void main() async {
   group(
     '${sentenceCaseName} - Page',
     () {
+      void _setupMocks() {}
       void _resetMocks() {}
 
       Future _beforeEach(
         WidgetTester tester,
       ) async {
         await tester.pumpWidget(
-          AppUtils.createWithInjectors(
+          TestUtils.createWithInjectors(
             MaterialApp(
               routes: {'': (ctx) => ${pascalCaseName}Page()},
               initialRoute: '',
@@ -109,6 +114,14 @@ void main() async {
                     as PresenterInherited<${pascalCaseName}Presenter, ${pascalCaseName}Model>)
                 .presenter;
       }
+
+      testWidgets('should display page', (WidgetTester tester) async {
+        _resetMocks();
+        _setupMocks();
+        await _beforeEach(tester);
+  
+        expect(find.text('${pascalCaseName}Page'), findsOneWidget);
+      });
     },
   );
 }

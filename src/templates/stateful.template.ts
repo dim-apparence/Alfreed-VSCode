@@ -22,13 +22,19 @@ import '${snakeCaseName}_presenter.dart';
 import '${snakeCaseName}_viewmodel.dart';
 
 abstract class ${pascalCaseName}View {
-  void refreshAnimations() {}
-  void refresh() {}
+  void refreshAnimations();
+  void refresh();
+}
+
+class ${pascalCaseName}Arguments {
+  ${pascalCaseName}Arguments();
 }
 
 class ${pascalCaseName}Page extends StatefulWidget {
+  final ${pascalCaseName}Arguments? args;
   ${pascalCaseName}Page({
     Key? key,
+    this.args,
   });
 
   @override
@@ -135,11 +141,12 @@ void main() async {
   // load mocked file here
 
   group('${sentenceCaseName} - Page', () {
+    void _setupMocks() { }
     void _resetMocks() { }
 
     Future _beforeEach(WidgetTester tester) async {
       await tester.pumpWidget(
-        AppUtils.createWithInjectors(
+        TestUtils.createWithInjectors(
           MaterialApp(
             routes: {
               '': (ctx) => ${pascalCaseName}Page(),
@@ -154,9 +161,10 @@ void main() async {
 
     testWidgets('should display page', (WidgetTester tester) async {
       _resetMocks();
+      _setupMocks();
       await _beforeEach(tester);
 
-      expect(find.byKey(ValueKey('${pascalCaseName}Page')), findsOneWidget);
+      expect(find.text('${pascalCaseName}Page'), findsOneWidget);
     });
   });
 }

@@ -110,11 +110,12 @@ void main() async {
       model = widgetState.viewModel;
     }
 
+    VOID _setupMocks() { }
     void _resetMocks() { }
 
     Future _beforeEach(WidgetTester tester) async {
       await tester.pumpWidget(
-        AppUtils.createWithInjectors(
+        TestUtils.createWithInjectors(
           MaterialApp(
             routes: {
               '': (ctx) => ${pascalCaseName}Page(),
@@ -130,6 +131,7 @@ void main() async {
 
     testWidgets('should display page', (WidgetTester tester) async {
       _resetMocks();
+      _setupMocks();
       await _beforeEach(tester);
 
       expect(find.byKey(ValueKey('${pascalCaseName}Page')), findsOneWidget);

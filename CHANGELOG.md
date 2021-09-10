@@ -4,6 +4,10 @@ All notable changes to the "koby" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.1.12]
+
+- Minor lint fixs for service.
+- Improve tests structure.
 
 ## [0.1.11]
 

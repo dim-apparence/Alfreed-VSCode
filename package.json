@@ -2,7 +2,7 @@
   "name": "koby",
   "displayName": "Koby",
   "description": "",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "engines": {
     "vscode": "^1.46.0"
   },

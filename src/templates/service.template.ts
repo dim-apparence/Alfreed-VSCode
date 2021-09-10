@@ -1,10 +1,14 @@
+import { pascalCase } from "change-case";
+
 export class TemplateService {
   static generateServiceTemplate(serviceName: string) {
+    const pascalCaseName = pascalCase(serviceName);
+    
     return `\
-class ${serviceName}Service {
+class ${pascalCaseName}Service {
   // TODO: final YourRepo _yourRepo;
 
-  ${serviceName}Service();
+  ${pascalCaseName}Service();
 }
 `;
   }
