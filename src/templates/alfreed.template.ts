@@ -66,7 +66,7 @@ class ${pascalCaseName}Presenter extends Presenter<${pascalCaseName}ViewModel, $
   void onInit() {
     super.onInit();
 
-
+    
   }
 }
 `;
@@ -92,8 +92,13 @@ void main() async {
   group(
     '${sentenceCaseName} - Page',
     () {
-      void _setupMocks() {}
-      void _resetMocks() {}
+      tearDown(() {
+        
+      });
+
+      setUp(() {
+
+      });
 
       Future _beforeEach(
         WidgetTester tester,
@@ -111,13 +116,11 @@ void main() async {
 
         presenter =
             (tester.widget(find.byKey(ValueKey('${pascalCaseName}PagePresenter')))
-                    as PresenterInherited<${pascalCaseName}Presenter, ${pascalCaseName}Model>)
+                    as PresenterInherited<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel>)
                 .presenter;
       }
 
       testWidgets('should display page', (WidgetTester tester) async {
-        _resetMocks();
-        _setupMocks();
         await _beforeEach(tester);
   
         expect(find.text('${pascalCaseName}Page'), findsOneWidget);

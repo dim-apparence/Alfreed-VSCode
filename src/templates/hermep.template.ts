@@ -32,7 +32,7 @@ abstract class ${pascalCaseName}ViewInterface { }
 
 class ${pascalCaseName}Page extends StatefulWidget {
   final ${pascalCaseName}Arguments? args;
-  ${pascalCaseName}Page({Key? key, this.args}) : super(key: key);
+  const ${pascalCaseName}Page({Key? key, this.args}) : super(key: key);
 
   @override
   _${pascalCaseName}PageState createState() => _${pascalCaseName}PageState();
@@ -110,8 +110,13 @@ void main() async {
       model = widgetState.viewModel;
     }
 
-    VOID _setupMocks() { }
-    void _resetMocks() { }
+    tearDown(() {
+        
+    });
+
+    setUp(() {
+
+    });
 
     Future _beforeEach(WidgetTester tester) async {
       await tester.pumpWidget(
@@ -130,8 +135,6 @@ void main() async {
     }
 
     testWidgets('should display page', (WidgetTester tester) async {
-      _resetMocks();
-      _setupMocks();
       await _beforeEach(tester);
 
       expect(find.byKey(ValueKey('${pascalCaseName}Page')), findsOneWidget);

@@ -32,10 +32,10 @@ class ${pascalCaseName}Arguments {
 
 class ${pascalCaseName}Page extends StatefulWidget {
   final ${pascalCaseName}Arguments? args;
-  ${pascalCaseName}Page({
+  const ${pascalCaseName}Page({
     Key? key,
     this.args,
-  });
+  }) : super(key: key);
 
   @override
   _${pascalCaseName}PageState createState() => _${pascalCaseName}PageState();
@@ -136,13 +136,21 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 void main() async {
+  late ${pascalCaseName}Presenter presenter;
+  late ${pascalCaseName}ViewModel model;
+
   // mock repositories here
 
   // load mocked file here
 
   group('${sentenceCaseName} - Page', () {
-    void _setupMocks() { }
-    void _resetMocks() { }
+    tearDown(() {
+        
+    });
+
+    setUp(() {
+
+    });
 
     Future _beforeEach(WidgetTester tester) async {
       await tester.pumpWidget(
@@ -157,11 +165,14 @@ void main() async {
         ),
       );
       await tester.pumpAndSettle();
+
+      final dynamic pageState =
+          tester.state(find.byType(${pascalCaseName}Page));
+      presenter = pageState.presenter;
+      model = pageState.model;
     }
 
     testWidgets('should display page', (WidgetTester tester) async {
-      _resetMocks();
-      _setupMocks();
       await _beforeEach(tester);
 
       expect(find.text('${pascalCaseName}Page'), findsOneWidget);
