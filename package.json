@@ -21,7 +21,10 @@
     "alfreed",
     "stateful",
     "loader",
-    "service"
+    "service",
+    "template",
+    "model",
+    "one piece"
   ],
   "icon": "icon.png",
   "activationEvents": [
