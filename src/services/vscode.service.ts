@@ -1,4 +1,4 @@
-import { InputBoxOptions, window } from "vscode";
+import { InputBoxOptions, QuickPickOptions, window } from "vscode";
 
 export class VSCodeService {
   prompt(placeHolder: string) {
@@ -6,5 +6,12 @@ export class VSCodeService {
       placeHolder,
     };
     return window.showInputBox(blocNamePromptOptions);
+  }
+
+  promptQuestion(placeHolder: string) {
+    const questionOptions: QuickPickOptions = {
+      placeHolder,
+    };
+    return window.showQuickPick(["Yes", "No"], questionOptions);
   }
 }

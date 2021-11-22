@@ -4,6 +4,16 @@ All notable changes to the "koby" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+
+## [0.1.14]
+
+- Add params in Alfreed.
+- Add a setting to disable sound.
+- Add a prompt to generate test or not.
+- Remove unused animations in stateful template.
+- Improve tests structure (ignore unused variables).
+- Update icon.
+
 ## [0.1.13]
 
 - Add super keys.

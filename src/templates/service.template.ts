@@ -6,7 +6,7 @@ export class TemplateService {
     
     return `\
 class ${pascalCaseName}Service {
-  // TODO: final YourRepo _yourRepo;
+  // final YourRepo _yourRepo;
 
   ${pascalCaseName}Service();
 }

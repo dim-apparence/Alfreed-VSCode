@@ -110,12 +110,18 @@ export class TemplateCreatorService {
         `/${snakeCase(pageNameFiltered)}.dart`,
         pageTemplate
       ),
+    ]);
+
+    const generateTestPrompt = await this.vscodeService.promptQuestion(
+      "Do you want to generate test file ?"
+    );
+    if (generateTestPrompt === "Yes") {
       FileManagerService.createFile(
         currentPath.replace("lib", "test"),
         `/${snakeCase(pageNameFiltered)}_test.dart`,
         testTemplate
-      ),
-    ]);
+      );
+    }
 
     window.showInformationMessage(
       `${pascalCase(pageName)} created successfully 👌`
@@ -159,12 +165,18 @@ export class TemplateCreatorService {
         `/${snakeCase(pageNameFiltered)}.dart`,
         pageTemplate
       ),
+    ]);
+
+    const generateTestPrompt = await this.vscodeService.promptQuestion(
+      "Do you want to generate test file ?"
+    );
+    if (generateTestPrompt === "Yes") {
       FileManagerService.createFile(
         currentPath.replace("lib", "test"),
         `/${snakeCase(pageNameFiltered)}_test.dart`,
         testTemplate
-      ),
-    ]);
+      );
+    }
 
     window.showInformationMessage(
       `${pascalCase(pageName)} created successfully 👌`
@@ -188,7 +200,7 @@ export class TemplateCreatorService {
     const pageNameFiltered = pageName.replace(/page/i, "");
     const modelTemplate = TemplateHermep.generateModel(pageNameFiltered);
     const presenterTemplate =
-    TemplateHermep.generatePresenter(pageNameFiltered);
+      TemplateHermep.generatePresenter(pageNameFiltered);
     const pageTemplate = TemplateHermep.generatePage(pageNameFiltered);
     const testTemplate = TemplateHermep.generateTest(pageNameFiltered);
 
@@ -207,13 +219,19 @@ export class TemplateCreatorService {
         currentPath,
         `/${snakeCase(pageNameFiltered)}.dart`,
         pageTemplate
-      ),
+      )
+    ]);
+
+    const generateTestPrompt = await this.vscodeService.promptQuestion(
+      "Do you want to generate test file ?"
+    );
+    if (generateTestPrompt === "Yes") {
       FileManagerService.createFile(
         currentPath.replace("lib", "test"),
         `/${snakeCase(pageNameFiltered)}_test.dart`,
         testTemplate
-      ),
-    ]);
+      );
+    }
 
     window.showInformationMessage(
       `${pascalCase(pageName)} created successfully 👌`

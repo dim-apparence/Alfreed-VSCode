@@ -2,7 +2,7 @@
   "name": "koby",
   "displayName": "Koby",
   "description": "",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "engines": {
     "vscode": "^1.46.0"
   },
@@ -33,6 +33,16 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "Enable sound",
+      "properties": {
+        "koby.enableSound": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable sound when creating files 🔔"
+        }
+      }
+    },
     "commands": [
       {
         "command": "koby.createPage",

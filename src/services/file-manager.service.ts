@@ -10,7 +10,7 @@ export class FileManagerService {
     try {
       fs.writeFileSync(path + filename, content, "utf8");
     } catch (err) {
-      console.log("error writing template:" + err.message);
+      console.log("error writing template:" + err);
     }
   }
 

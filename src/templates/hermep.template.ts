@@ -96,7 +96,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 void main() async {
+  // ignore: unused_local_variable
   late ${pascalCaseName}Presenter presenter;
+  // ignore: unused_local_variable
   late ${pascalCaseName}ViewModel model;
 
   // mock repositories here

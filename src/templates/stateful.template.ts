@@ -22,7 +22,6 @@ import '${snakeCaseName}_presenter.dart';
 import '${snakeCaseName}_viewmodel.dart';
 
 abstract class ${pascalCaseName}View {
-  void refreshAnimations();
   void refresh();
 }
 
@@ -43,7 +42,6 @@ class ${pascalCaseName}Page extends StatefulWidget {
 
 class _${pascalCaseName}PageState extends State<${pascalCaseName}Page> implements ${pascalCaseName}View {
   bool _didInitState = false;
-  late List<AnimationController> animationControllers;
   late ${pascalCaseName}Presenter presenter;
   late ${pascalCaseName}ViewModel? model;
 
@@ -60,9 +58,6 @@ class _${pascalCaseName}PageState extends State<${pascalCaseName}Page> implement
   @override
   void dispose() {
     this.presenter.dispose();
-    for (var controller in this.animationControllers) {
-      controller.dispose();
-    }
     super.dispose();
   }
 
@@ -73,7 +68,6 @@ class _${pascalCaseName}PageState extends State<${pascalCaseName}Page> implement
       this,
     ).init();
     this.model = this.presenter.viewModel;
-    this.animationControllers = [];
   }
 
   void afterViewInit() {
@@ -87,9 +81,6 @@ class _${pascalCaseName}PageState extends State<${pascalCaseName}Page> implement
   Widget build(BuildContext context) {
     return Text('${pascalCaseName}Page');
   }
-
-  @override
-  void refreshAnimations() => this.refresh();
 
   @override
   void refresh() => this.setState(() {});
@@ -136,7 +127,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 void main() async {
+  // ignore: unused_local_variable
   late ${pascalCaseName}Presenter presenter;
+  // ignore: unused_local_variable
   late ${pascalCaseName}ViewModel model;
 
   // mock repositories here

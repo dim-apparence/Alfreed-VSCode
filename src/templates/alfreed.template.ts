@@ -24,12 +24,16 @@ import 'package:flutter/material.dart';
 import '${snakeCaseName}_presenter.dart';
 import '${snakeCaseName}_viewmodel.dart';
 
+class ${pascalCaseName}Args {
+  ${pascalCaseName}Args();
+}
+
 class ${pascalCaseName}ViewInterface extends AlfreedView {
   ${pascalCaseName}ViewInterface(BuildContext context) : super(context: context);
 }
 
 class ${pascalCaseName}Page extends AlfreedPage<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel, ${pascalCaseName}ViewInterface> {
-  ${pascalCaseName}Page({Object? args}) : super(args: args);
+  ${pascalCaseName}Page({${pascalCaseName}Args? args}) : super(args: args);
   
   @override
   AlfreedPageBuilder<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel, ${pascalCaseName}ViewInterface> get alfreedPageBuilder {
@@ -83,7 +87,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 void main() async {
+  // ignore: unused_local_variable
   late ${pascalCaseName}Presenter presenter;
+  // ignore: unused_local_variable
+  late ${pascalCaseName}ViewModel model;
 
   // mock repositories here
 
@@ -118,6 +125,7 @@ void main() async {
             (tester.widget(find.byKey(ValueKey('${pascalCaseName}PagePresenter')))
                     as PresenterInherited<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel>)
                 .presenter;
+        model = presenter.state!;
       }
 
       testWidgets('should display page', (WidgetTester tester) async {
