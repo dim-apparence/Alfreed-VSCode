@@ -6,7 +6,7 @@ export class TemplateStateful {
 
     return `\
 class ${pascalCaseName}ViewModel {
-  ${pascalCaseName}ViewModel();
+
 }
 `;
   }
@@ -60,7 +60,8 @@ class _${pascalCaseName}PageState extends State<${pascalCaseName}Page> implement
     this.presenter.dispose();
     super.dispose();
   }
-
+  
+  @override
   void initState() {
     super.initState();
     this.presenter = ${pascalCaseName}Presenter(
@@ -110,9 +111,9 @@ class ${pascalCaseName}Presenter {
     return this;
   }
 
-  void initServices() { }
-  void loadData() { }
   void dispose() { }
+
+  void loadData() { }
 }  
 `;
   }

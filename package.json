@@ -1,8 +1,8 @@
 {
   "name": "koby",
   "displayName": "Koby",
-  "description": "",
-  "version": "0.1.14",
+  "description": "Generate template for your Flutter app easily (works with vanilla stateful, service, loader, Hermep & Alfreed state libraries)",
+  "version": "0.1.15",
   "engines": {
     "vscode": "^1.46.0"
   },
@@ -10,6 +10,9 @@
   "categories": [
     "Other"
   ],
+  "author": {
+    "name": "Dimitri Dessus"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/dim-apparence/Koby"
@@ -17,7 +20,16 @@
   "keywords": [
     "flutter",
     "mvvm",
+    "mvc",
     "generator",
+    "hermep",
+    "gen",
+    "templating",
+    "structure",
+    "test",
+    "presenter",
+    "logic",
+    "split",
     "alfreed",
     "stateful",
     "loader",

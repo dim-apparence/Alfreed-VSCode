@@ -4,6 +4,11 @@ All notable changes to the "koby" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.1.15]
+
+- Remove unused view model constructor from model.
+- Reorganize vanilla stateful methods.
+- Improve package.json.
 
 ## [0.1.14]
 

@@ -8,7 +8,7 @@ export class TemplateHermep {
 import 'package:hermep/hermep.dart';
 
 class ${pascalCaseName}ViewModel with HermepModel {
-  ${pascalCaseName}ViewModel();
+  
 }
 `;
   }

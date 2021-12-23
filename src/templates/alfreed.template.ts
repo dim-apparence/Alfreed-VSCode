@@ -7,8 +7,6 @@ export class TemplateAlfreed {
     return `\
 class ${pascalCaseName}ViewModel {
   
-
-  ${pascalCaseName}ViewModel();
 }
 `;
   }
