@@ -4,6 +4,11 @@ All notable changes to the "koby" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.1.2]
+- Upgrade template to works with latest alfreed version.
+- Support gate for Alfreed page test.
+- Upgrade dependencies.
+
 ## [0.1.15]
 
 - Remove unused view model constructor from model.

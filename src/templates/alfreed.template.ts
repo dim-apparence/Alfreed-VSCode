@@ -34,8 +34,8 @@ class ${pascalCaseName}Page extends AlfreedPage<${pascalCaseName}Presenter, ${pa
   ${pascalCaseName}Page({${pascalCaseName}Args? args}) : super(args: args);
   
   @override
-  AlfreedPageBuilder<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel, ${pascalCaseName}ViewInterface> get alfreedPageBuilder {
-      return AlfreedPageBuilder<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel, ${pascalCaseName}ViewInterface>(
+  AlfreedPageBuilder<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel, ${pascalCaseName}ViewInterface> build() {
+    return AlfreedPageBuilder<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel, ${pascalCaseName}ViewInterface>(
       key: ValueKey('${pascalCaseName}PagePresenter'),
       presenterBuilder: (context) => ${pascalCaseName}Presenter(),
       interfaceBuilder: (context) => ${pascalCaseName}ViewInterface(context),
@@ -108,22 +108,19 @@ void main() async {
       Future _beforeEach(
         WidgetTester tester,
       ) async {
-        await tester.pumpWidget(
-          TestUtils.createWithInjectors(
-            MaterialApp(
-              routes: {'': (ctx) => ${pascalCaseName}Page()},
-              initialRoute: '',
-            ),
-            mockedRepositories: { },
-          ),
+        await initAppWithOnGeneratedRoutes(
+          tester,
+          home: ${pascalCaseName}Page(),
+          routes: (settings) {},
         );
+        await tester.pump(const Duration(milliseconds: 100));
         await tester.pumpAndSettle();
 
         presenter =
             (tester.widget(find.byKey(ValueKey('${pascalCaseName}PagePresenter')))
                     as PresenterInherited<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel>)
                 .presenter;
-        model = presenter.state!;
+        model = presenter.state;
       }
 
       testWidgets('should display page', (WidgetTester tester) async {

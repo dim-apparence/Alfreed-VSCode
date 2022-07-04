@@ -2,7 +2,7 @@
   "name": "koby",
   "displayName": "Koby",
   "description": "Generate template for your Flutter app easily (works with vanilla stateful, service, loader, Hermep & Alfreed state libraries)",
-  "version": "0.1.15",
+  "version": "0.1.2",
   "engines": {
     "vscode": "^1.46.0"
   },
@@ -119,23 +119,23 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/glob": "^7.1.3",
-    "@types/mkdirp": "^1.0.1",
-    "@types/mocha": "^8.0.4",
-    "@types/node": "^12.11.7",
-    "@types/vscode": "^1.46.0",
-    "@typescript-eslint/eslint-plugin": "^4.9.0",
-    "@typescript-eslint/parser": "^4.9.0",
-    "eslint": "^7.15.0",
-    "glob": "^7.1.6",
-    "mocha": "^8.1.3",
-    "typescript": "^4.1.2",
-    "vscode-test": "^1.4.1"
+    "@types/glob": "^7.2.0",
+    "@types/mkdirp": "^1.0.2",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.0.1",
+    "@types/vscode": "^1.68.1",
+    "@typescript-eslint/eslint-plugin": "^5.30.4",
+    "@typescript-eslint/parser": "^5.30.4",
+    "eslint": "^8.19.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "typescript": "^4.7.4",
+    "vscode-test": "^1.6.1"
   },
   "dependencies": {
     "path": "^0.12.7",
     "change-case": "^4.1.2",
     "mkdirp": "^1.0.4",
-    "play-sound": "^1.1.0"
+    "play-sound": "^1.1.5"
   }
 }
