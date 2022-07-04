@@ -4,7 +4,7 @@ All notable changes to the "koby" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [0.1.2]
+## [0.1.16]
 - Upgrade template to works with latest alfreed version.
 - Support gate for Alfreed page test.
 - Upgrade dependencies.
