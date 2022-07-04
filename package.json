@@ -6,6 +6,7 @@
   "engines": {
     "vscode": "^1.46.0"
   },
+  "license": "MIT",
   "publisher": "istornz",
   "categories": [
     "Other"
