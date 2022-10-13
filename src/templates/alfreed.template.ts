@@ -31,16 +31,16 @@ class ${pascalCaseName}ViewInterface extends AlfreedView {
 }
 
 class ${pascalCaseName}Page extends AlfreedPage<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel, ${pascalCaseName}ViewInterface> {
-  ${pascalCaseName}Page({${pascalCaseName}Args? args}) : super(args: args);
+  ${pascalCaseName}Page({Key? key, ${pascalCaseName}Args? args}) : super(args: args, key: key);
   
   @override
   AlfreedPageBuilder<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel, ${pascalCaseName}ViewInterface> build() {
     return AlfreedPageBuilder<${pascalCaseName}Presenter, ${pascalCaseName}ViewModel, ${pascalCaseName}ViewInterface>(
-      key: ValueKey('${pascalCaseName}PagePresenter'),
+      key: const ValueKey('${pascalCaseName}PagePresenter'),
       presenterBuilder: (context) => ${pascalCaseName}Presenter(),
       interfaceBuilder: (context) => ${pascalCaseName}ViewInterface(context),
       builder: (context, presenter, model) {
-        return Scaffold(
+        return const Scaffold(
           key: ValueKey('${pascalCaseName}Page'),
           body: Text('${pascalCaseName}Page'),
         );
@@ -82,7 +82,6 @@ class ${pascalCaseName}Presenter extends Presenter<${pascalCaseName}ViewModel, $
 import 'package:alfreed/alfreed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 
 void main() async {
   // ignore: unused_local_variable
@@ -105,7 +104,7 @@ void main() async {
 
       });
 
-      Future _beforeEach(
+      Future beforeEach(
         WidgetTester tester,
       ) async {
         await initAppWithOnGeneratedRoutes(
@@ -113,7 +112,6 @@ void main() async {
           home: ${pascalCaseName}Page(),
           routes: (settings) {},
         );
-        await tester.pump(const Duration(milliseconds: 100));
         await tester.pumpAndSettle();
 
         presenter =
@@ -124,7 +122,7 @@ void main() async {
       }
 
       testWidgets('should display page', (WidgetTester tester) async {
-        await _beforeEach(tester);
+        await beforeEach(tester);
   
         expect(find.text('${pascalCaseName}Page'), findsOneWidget);
       });

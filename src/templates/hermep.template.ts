@@ -35,7 +35,7 @@ class ${pascalCaseName}Page extends StatefulWidget {
   const ${pascalCaseName}Page({Key? key, this.args}) : super(key: key);
 
   @override
-  _${pascalCaseName}PageState createState() => _${pascalCaseName}PageState();
+  State<${pascalCaseName}Page> createState() => _${pascalCaseName}PageState();
 }
 
 class _${pascalCaseName}PageState extends HermepPage<${pascalCaseName}ViewModel, ${pascalCaseName}Presenter, ${pascalCaseName}Page> with ${pascalCaseName}ViewInterface {
@@ -50,7 +50,7 @@ class _${pascalCaseName}PageState extends HermepPage<${pascalCaseName}ViewModel,
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       key: ValueKey('${pascalCaseName}Page'),
       body: Text('${pascalCaseName}Page'),
     );
@@ -73,7 +73,7 @@ class ${pascalCaseName}Presenter with HermepPresenter<${pascalCaseName}ViewModel
   ${pascalCaseName}Presenter(
     ${pascalCaseName}ViewInterface viewInterface,
   ) {
-    this.viewModel = ${pascalCaseName}ViewModel();
+    viewModel = ${pascalCaseName}ViewModel();
     this.viewInterface = viewInterface;
   }
 
@@ -93,7 +93,6 @@ class ${pascalCaseName}Presenter with HermepPresenter<${pascalCaseName}ViewModel
     return `\
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 
 void main() async {
   // ignore: unused_local_variable
@@ -120,26 +119,20 @@ void main() async {
 
     });
 
-    Future _beforeEach(WidgetTester tester) async {
-      await tester.pumpWidget(
-        TestUtils.createWithInjectors(
-          MaterialApp(
-            routes: {
-              '': (ctx) => ${pascalCaseName}Page(),
-            },
-            initialRoute: '',
-          ),
-          mockedRepositories: {},
-        ),
+    Future beforeEach(WidgetTester tester) async {
+      await initAppWithOnGeneratedRoutes(
+        tester,
+        home: ${pascalCaseName}Page(),
+        routes: (settings) {},
       );
       await tester.pumpAndSettle();
       getHermepState(tester);
     }
 
     testWidgets('should display page', (WidgetTester tester) async {
-      await _beforeEach(tester);
+      await beforeEach(tester);
 
-      expect(find.byKey(ValueKey('${pascalCaseName}Page')), findsOneWidget);
+      expect(find.byKey(const ValueKey('${pascalCaseName}Page')), findsOneWidget);
     });
   });
 }

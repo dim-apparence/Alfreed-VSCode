@@ -37,13 +37,13 @@ class ${pascalCaseName}Page extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _${pascalCaseName}PageState createState() => _${pascalCaseName}PageState();
+  State<${pascalCaseName}Page> createState() => _${pascalCaseName}PageState();
 }
 
 class _${pascalCaseName}PageState extends State<${pascalCaseName}Page> implements ${pascalCaseName}View {
   bool _didInitState = false;
   late ${pascalCaseName}Presenter presenter;
-  late ${pascalCaseName}ViewModel? model;
+  late ${pascalCaseName}ViewModel model;
 
   @override
   @mustCallSuper
@@ -57,34 +57,35 @@ class _${pascalCaseName}PageState extends State<${pascalCaseName}Page> implement
 
   @override
   void dispose() {
-    this.presenter.dispose();
+    presenter.dispose();
     super.dispose();
   }
   
   @override
   void initState() {
     super.initState();
-    this.presenter = ${pascalCaseName}Presenter(
+    presenter = ${pascalCaseName}Presenter(
       ${pascalCaseName}ViewModel(),
       this,
     ).init();
-    this.model = this.presenter.viewModel;
+    model = presenter.viewModel;
   }
 
   void afterViewInit() {
-    this
-        .presenter
-        .initServices();
-    this.presenter.loadData();
+    // presenter.initServices();
+    presenter.loadData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Text('${pascalCaseName}Page');
+    return const Scaffold(
+      key: ValueKey('${pascalCaseName}Page'),
+      body: Text('${pascalCaseName}Page'),
+    );
   }
 
   @override
-  void refresh() => this.setState(() {});
+  void refresh() => setState(() {});
 }    
 `;
   }
@@ -125,7 +126,6 @@ class ${pascalCaseName}Presenter {
     return `\
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 
 void main() async {
   // ignore: unused_local_variable
@@ -146,17 +146,11 @@ void main() async {
 
     });
 
-    Future _beforeEach(WidgetTester tester) async {
-      await tester.pumpWidget(
-        TestUtils.createWithInjectors(
-          MaterialApp(
-            routes: {
-              '': (ctx) => ${pascalCaseName}Page(),
-            },
-            initialRoute: '',
-          ),
-          mockedRepositories: {},
-        ),
+    Future beforeEach(WidgetTester tester) async {
+      await initAppWithOnGeneratedRoutes(
+        tester,
+        home: ${pascalCaseName}Page(),
+        routes: (settings) {},
       );
       await tester.pumpAndSettle();
 
@@ -167,7 +161,7 @@ void main() async {
     }
 
     testWidgets('should display page', (WidgetTester tester) async {
-      await _beforeEach(tester);
+      await beforeEach(tester);
 
       expect(find.text('${pascalCaseName}Page'), findsOneWidget);
     });
