@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://s6.gifyu.com/images/dbcd435-1b94d299-051c-4cb6-9de9-51cf6e076bf9.png" />
+  <img src="https://raw.githubusercontent.com/istornz/flutter_hermep/master/images/koby.jpg" />
 </p>
 
 # Koby
