@@ -4,8 +4,13 @@ All notable changes to the "koby" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.0.0]
+- Update Hermep template.
+- Upgrade dependencies.
+- Fix logo.
+
 ## [0.1.17]
-- Remove all this occurences according default lint
+- Remove all this occurrences according default lint
 - Update Alfreed template
 - Update stateful template
 - Update Hermep template
