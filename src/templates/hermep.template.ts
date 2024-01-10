@@ -32,7 +32,7 @@ mixin ${pascalCaseName}ViewInterface { }
 
 class ${pascalCaseName}Page extends StatefulWidget {
   final ${pascalCaseName}Arguments? args;
-  const ${pascalCaseName}Page({Key? key, this.args}) : super(key: key);
+  const ${pascalCaseName}Page({super.key, this.args});
 
   @override
   State<${pascalCaseName}Page> createState() => _${pascalCaseName}PageState();
